@@ -1,6 +1,7 @@
 //all restaurants
 import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
+import { Link } from 'react-router-dom'
 
 const Index = () => {
     //by default useState is a blank array
@@ -9,8 +10,8 @@ const Index = () => {
     useEffect(() => {
         axios.get('http://localhost:8001/restaurants')
         .then(response => {
-            console.log(response.data) //if you get a response, write it to log
-            setRestaurants(response.data)
+            console.log(response.data.restaurants) //retrieving restaurant data
+            setRestaurants(response.data.restaurants)
         })
         .catch(err => {
             console.log(`Error: ${err}`) //if you get an error, write it to log
@@ -24,11 +25,11 @@ const Index = () => {
 
     //display all restaurants
     const restaurantsList = restaurants.map(restaurant => {
-       return <div>
+       return <div key={restaurant._id}>
            
-            <p><b>Name:</b> {restaurant.name} </p>
+           <p><b>Name:</b> <Link to={`/restaurants/${restaurant._id}`} >{restaurant.name}</Link> </p>
             <p><b>Location:</b> {restaurant.borough} </p>
-            <p><b>Cuisines:</b> {restaurant.cuisine} </p>
+            <p><b>Specialty:</b> {restaurant.cuisine} </p>
             <hr />
         </div>
     })

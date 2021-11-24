@@ -10,7 +10,11 @@ import Contact from './pages/Contact';
 import PageNotFound from './pages/PageNotFound';
 
 //RESTAURANTS
-import Index from './pages/restaurants/Index';
+import RestaurantsIndex from './pages/restaurants/Index';
+import RestaurantsShow from './pages/restaurants/Show';
+
+//USER
+import Login from './pages/Login';
 
 const App = () => {
 
@@ -19,9 +23,11 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/restaurants" element={<Index />} />
+        <Route path="/restaurants" element={<RestaurantsIndex />} />
+        <Route path="/restaurants/:id" element={<RestaurantsShow />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
