@@ -18,8 +18,8 @@ const Show = () => {
             }
         })
         .then(response => {
-            console.log(response.data)
-            setRestaurant(response.data)
+            console.log(response.data.restaurant)
+            setRestaurant(response.data.restaurant)
         })
         .catch(err => {
             console.log(`Error: ${err}`)

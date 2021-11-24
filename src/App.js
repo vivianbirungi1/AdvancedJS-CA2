@@ -13,8 +13,11 @@ import PageNotFound from './pages/PageNotFound';
 import RestaurantsIndex from './pages/restaurants/Index';
 import RestaurantsShow from './pages/restaurants/Show';
 
+//NEIGHBORHOODS
+import NeighborhoodsIndex from './pages/neighborhoods/Index';
+
 //USER
-import Login from './pages/Login';
+import Login from './pages/users/Login';
 
 const App = () => {
 
@@ -25,6 +28,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<RestaurantsIndex />} />
         <Route path="/restaurants/:id" element={<RestaurantsShow />} />
+
+        <Route path="/neighborhoods" element={<NeighborhoodsIndex />} />
+
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />

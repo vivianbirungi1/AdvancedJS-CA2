@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 
 
-const Home = () => {
+const Login = () => {
 
   const [form, setForm] = useState({})
 
@@ -20,10 +20,14 @@ const Home = () => {
     console.log(form)
 
     //can just pass in form rather than specifing form fields - works for multiple different forms
-    axios.post('http://localhost:8001/users/login', form)
+    axios.post('http://localhost:8001/users/login', {
+      name: form.name,  
+      email: form.email,
+      password: form.password
+    })
     .then(response => {
-      console.log(response.data.token)
-      localStorage.setItem('token', response.data.token)
+      console.log(response.data.auth_token)
+      localStorage.setItem('token', response.data.auth_token)
     })
     .catch(err => console.log(err))
   }
@@ -45,4 +49,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Login
