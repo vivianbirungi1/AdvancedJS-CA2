@@ -1,10 +1,13 @@
 import { useState } from 'react' 
 import axios from 'axios'
+import TextField from '@mui/material/TextField';
 
+//check if auth is true
+//creating component for login form
 
-const Login = () => {
+const Login = props => {
 
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState(false)
 
   const handleForm = e => {
 
@@ -27,25 +30,31 @@ const Login = () => {
     })
     .then(response => {
       console.log(response.data.auth_token)
-      localStorage.setItem('token', response.data.auth_token)
+      props.onAuthenticated(true, response.data.auth_token);
     })
     .catch(err => console.log(err))
   }
 
+  let styles = {
+    backgroundColor: "yellow",
+    fontWeight: "bold"
+  }
+
   return (
-    <div>
+    <>
       <h2>Login</h2>
-      
-      Full Name:  <input type="text" name= "name" onChange={handleForm} /> <br />
-      Email:  <input type="text" name= "email" onChange={handleForm} /> <br />
-      Password:  <input type="password" name= "password" onChange={handleForm} />
+      {/* {!props.authenticated ? <Login onAuthenticated={props.onAuthenticated} /> : "" } */}
+
+        <TextField label="Name" variant="outlined" name= "name" onChange={handleForm} /> <br />
+        <TextField label="Email" variant="outlined" name= "email" onChange={handleForm} /> <br />
+        <TextField label="Password" variant="outlined" type="password" name= "password" onChange={handleForm} />
 
       <br />
 
-      <button onClick={submitForm}>Submit</button>
+      <button style={styles} onClick={submitForm}>Submit</button>
 
 
-    </div>
+    </>
   )
 }
 

@@ -38,6 +38,7 @@ const Index = () => {
     return (
       <div>
         <h2>All Restaurants</h2>
+        <Link to="create">Create a festival</Link>  
         <p>This is the restaurants index page</p>
         {/* gets you first index within that array */}
         { restaurantsList } 
