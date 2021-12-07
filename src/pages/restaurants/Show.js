@@ -3,6 +3,7 @@
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
+import {Link} from 'react-router-dom'
 
 const Show = () => {
 
@@ -35,6 +36,7 @@ const Show = () => {
         <p><b>Name:</b> {restaurant.name} </p>
             <p><b>Location:</b> {restaurant.borough} </p>
             <p><b>Specialty:</b> {restaurant.cuisine} </p>
+            <Link to="edit">Edit</Link>
       </div>
     )
   }

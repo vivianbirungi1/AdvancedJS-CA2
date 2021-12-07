@@ -21,6 +21,7 @@ import NeighborhoodsIndex from './pages/neighborhoods/Index';
 
 //USER
 import Login from './pages/users/Login';
+import Profile from './pages/users/Profile'
 
 const App = () => {
 
@@ -53,6 +54,7 @@ if(authenticated){
   <>
   <Route path="/restaurants/create" element={<RestaurantsCreate /> } /> 
   <Route path="/restaurants/:id/edit" element={<RestaurantsEdit /> } /> 
+ 
    <Route path="/restaurants/:id" element={<RestaurantsShow /> } /> 
    <Route path="/neighborhoods" element={<NeighborhoodsIndex />} />
 
@@ -67,6 +69,8 @@ if(authenticated){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<RestaurantsIndex />} />
+        <Route path="/users/profile" element={<Profile />} />
+
         {protectedRestaurants}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
