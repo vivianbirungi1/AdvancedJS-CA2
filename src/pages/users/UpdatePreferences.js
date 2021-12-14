@@ -6,7 +6,7 @@ import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@m
 //import DateAdapter form '@mui/lab/AdapterMoment'
 import { useNavigate, useParams  } from 'react-router';
 
-const Edit = () => {
+const UpdatePreferences = () => {
   
 
   let navigate = useNavigate()
@@ -18,14 +18,15 @@ const Edit = () => {
   let token = localStorage.getItem('token')
 
   useEffect(() => {
-      axios.get(`http://localhost:8001/users/update-preferences/${id}`, {
+      axios.put(`http://localhost:8001/users/update-preferences`, {
           headers: {
               "Authorization": `Bearer ${token}`
           }
       })
       .then(response => {
           console.log(response.data)
-          setUser(response.data)
+          navigate(`/profile/${response.data._id}`);
+         // setUser(response.data)
          // setForm(response.data)
       })
       .catch(err => {
@@ -62,7 +63,7 @@ const Edit = () => {
     let token = localStorage.getItem('token')
 
     //can just pass in form
-    axios.put('http://localhost:8001/users', form, {
+    axios.post('http://localhost:8001/users', form, {
       headers: {
         "Authorization": `Bearer ${token}`
     }
@@ -77,16 +78,18 @@ const Edit = () => {
     .catch(err => console.log(err))
   }
 
-  let styles = {
-    backgroundColor: "yellow",
-    fontWeight: "bold"
+  // let styles = {
+  //   backgroundColor: "yellow",
+  //   fontWeight: "bold"
+  // }
+
+  const Loading = () => {
+    return(<div className="form-group">Loading...</div>)
   }
-
-
 
     return (
       <>
-        <h2>Edit</h2>
+        <h2>Update Preferences</h2>
 
         {/* conditionally rendering form with if statement */}
 
@@ -97,26 +100,44 @@ const Edit = () => {
               shrink: true,
             }} /> 
 
-     ) : (<div className="form-group">Loading...</div>)
+     ) : (<Loading />)
         }
 
+
+
+{
+          form.email ? (
+
+            <TextField label="Email" variant="filled" name="email" onChange={handleForm} value={form.email} InputLabelProps={{
+              shrink: true,
+            }} />
+
+     ) : (<Loading />)
+        }
+
+{
+          form.password ? (
+
+            <TextField label="Password" type="password" variant="filled" name="password" onChange={handleForm} value={form.password} InputLabelProps={{
+              shrink: true,
+            }} />
+
+     ) : (<Loading />)
+        }
+
+      
+
       {/* <div className="form-group">
-      <TextField label="Name" variant="filled" name="name" onChange={handleForm} value={form.name} InputLabelProps={{
+      <TextField label="Email" variant="filled" name="email" onChange={handleForm} value={form.email} InputLabelProps={{
           shrink: true,
         }} /> <br />
       </div> */}
 
-      <div className="form-group">
-      <TextField label="Email" variant="filled" name="email" onChange={handleForm} value={form.email} InputLabelProps={{
-          shrink: true,
-        }} /> <br />
-      </div>
-
-      <div className="form-group">
+      {/* <div className="form-group">
       <TextField label="Password" type="password" variant="filled" name="password" onChange={handleForm} value={form.password} InputLabelProps={{
           shrink: true,
         }} /> <br />
-      </div>
+      </div> */}
 
       {/* <div className="form-group">
       <TextField label="Email" multiline rows="4" variant="filled" name="email" onChange={handleForm} value={user.email} InputLabelProps={{
@@ -193,4 +214,4 @@ const Edit = () => {
     )
   }
   
-  export default Edit
+  export default UpdatePreferences

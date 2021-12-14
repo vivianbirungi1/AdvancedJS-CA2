@@ -4,6 +4,8 @@ const Navbar = props => {
 
   let logoutButton;
   let profileButton;
+  let loginButton;
+  let registerButton;
   //
   let navigate = useNavigate()
 
@@ -14,8 +16,18 @@ const Navbar = props => {
   }
 
   const profile = () => {
-    props.onAuthenticated(true)
-    navigate('profile', { replace: false })
+   // props.onAuthenticated(true)
+    navigate('profile', { replace: true })
+  }
+
+  const login = () => {
+     props.onAuthenticated(false)
+     navigate('/', { replace: true })
+   }
+
+   const register = () => {
+    props.onAuthenticated(false)
+    navigate('/', { replace: true })
   }
 
   if(props.authenticated){
@@ -29,6 +41,22 @@ const Navbar = props => {
   
     )
 
+  } else{
+    loginButton = (
+      <>
+
+      <button onClick={ login }>Login</button>
+
+      </>
+    )
+
+    registerButton = (
+      <>
+
+        <button onClick={ register }>Register</button>
+
+      </>
+    )
   }
 
   if(props.authenticated){
@@ -43,6 +71,8 @@ const Navbar = props => {
     )
 
   }
+
+  
   
   return (
     <>
@@ -51,9 +81,12 @@ const Navbar = props => {
       <Link to="restaurants"> Restaurants</Link> |
       <Link to="neighborhoods"> Locations</Link> |
       <Link to="contact">Contact</Link> |
-      <Link to="login">Login</Link> | 
-      {logoutButton}
-      {profileButton}
+      {/* <Link to="profile">Profile</Link> | */}
+      {/* <Link to="update-preferences">Update Preferences</Link> |  */}
+      <Link to="register">{registerButton}</Link> | 
+      <Link to="login">{loginButton}</Link> | 
+      {logoutButton} 
+     <Link to="profile">{profileButton}</Link> 
     </>
   )
 }

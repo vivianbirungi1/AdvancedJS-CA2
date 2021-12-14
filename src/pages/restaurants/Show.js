@@ -31,12 +31,12 @@ const Show = () => {
   
     return (
       <div>
-        <h2>this is the show page: {id}</h2>
+        <h2> {restaurant.name}</h2>
 
         <p><b>Name:</b> {restaurant.name} </p>
             <p><b>Location:</b> {restaurant.borough} </p>
             <p><b>Specialty:</b> {restaurant.cuisine} </p>
-            <Link to="edit">Edit</Link>
+            <Link to="/restaurants"> Back</Link> 
       </div>
     )
   }

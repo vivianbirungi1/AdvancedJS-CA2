@@ -43,10 +43,10 @@ const Create = () => {
     .catch(err => console.log(err))
   }
 
-  let styles = {
-    backgroundColor: "yellow",
-    fontWeight: "bold"
-  }
+  // let styles = {
+  //   backgroundColor: "yellow",
+  //   fontWeight: "bold"
+  // }
 
 
 
@@ -157,7 +157,7 @@ const Create = () => {
 
       <br />
 
-      <button style={styles} onClick={submitForm}>Submit</button>
+      {/* <button style={styles} onClick={submitForm}>Submit</button> */}
 
       <Button onClick={submitForm} variant="contained">Submit</Button>
       </>

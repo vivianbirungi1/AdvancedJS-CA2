@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 //COMPONENTS
 import Navbar from './components/Navbar'
+import Register from './components/Register'
 
 //PAGES
 import Home from './pages/Home';
@@ -14,7 +15,6 @@ import PageNotFound from './pages/PageNotFound';
 import RestaurantsIndex from './pages/restaurants/Index';
 import RestaurantsShow from './pages/restaurants/Show';
 import RestaurantsCreate from './pages/restaurants/Create';
-import RestaurantsEdit from './pages/restaurants/Edit';
 
 //NEIGHBORHOODS
 import NeighborhoodsIndex from './pages/neighborhoods/Index';
@@ -22,6 +22,8 @@ import NeighborhoodsIndex from './pages/neighborhoods/Index';
 //USER
 import Login from './pages/users/Login';
 import Profile from './pages/users/Profile'
+import UpdatePreferences from './pages/users/UpdatePreferences'
+import CreateAdmin from './pages/users/CreateAdmin'
 
 const App = () => {
 
@@ -53,7 +55,6 @@ if(authenticated){
   protectedRestaurants =(
   <>
   <Route path="/restaurants/create" element={<RestaurantsCreate /> } /> 
-  <Route path="/restaurants/:id/edit" element={<RestaurantsEdit /> } /> 
  
    <Route path="/restaurants/:id" element={<RestaurantsShow /> } /> 
    <Route path="/neighborhoods" element={<NeighborhoodsIndex />} />
@@ -69,12 +70,17 @@ if(authenticated){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<RestaurantsIndex />} />
-        <Route path="/users/profile" element={<Profile />} />
+
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/update-preferences" element={<UpdatePreferences />} />
 
         {protectedRestaurants}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/createadmin" element={<CreateAdmin />} />
+        
         <Route path="/login" element={<Login onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
+        <Route path="/register" element={<Register onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

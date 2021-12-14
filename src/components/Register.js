@@ -1,11 +1,14 @@
 import { useState } from 'react' 
 import axios from 'axios'
 import {TextField, Button} from '@mui/material';
+//import { useNavigate  } from 'react-router';
 
 //check if auth is true
-//creating component for login form
+//creating component for register form
 
-const Login = props => {
+const Register = props => {
+
+ // let navigate = useNavigate()
 
   const [form, setForm] = useState(false)
 
@@ -22,30 +25,33 @@ const Login = props => {
   const submitForm = () => {
     console.log(form)
 
+  // let token = localStorage.setItem('token')
+
     //can just pass in form rather than specifing form fields - works for multiple different forms
-    axios.post('http://localhost:8001/users/login', {
-      name: form.name,  
-      email: form.email,
-      password: form.password
+    axios.post('http://localhost:8001/users/register', form, {
+    //   headers: {
+    //     "Authorization": `Bearer ${token}`
+    // }
     })
     .then(response => {
       console.log(response.data.auth_token)
+     // navigate(`/home/${response.data._id}`);
       props.onAuthenticated(true, response.data.auth_token);
     })
     .catch(err => console.log(err))
   }
 
-  let styles = {
-    backgroundColor: "yellow",
-    fontWeight: "bold"
-  }
+  // let styles = {
+  //   backgroundColor: "yellow",
+  //   fontWeight: "bold"
+  // }
 
   return (
     <>
-      <h2>Login</h2>
-      {/* {!props.authenticated ? <Login onAuthenticated={props.onAuthenticated} /> : "" } */}
+      <h2>Register</h2>
 
-      <div className="form-group">
+
+        <div className="form-group">
         <TextField label="Name" variant="outlined" name= "name" onChange={handleForm} /> <br />
         </div>
 
@@ -68,4 +74,4 @@ const Login = props => {
   )
 }
 
-export default Login
+export default Register
