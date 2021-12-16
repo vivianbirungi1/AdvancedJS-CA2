@@ -40,8 +40,8 @@ const Create = () => {
     }
     })
     .then(response => {
-      console.log(response.data.restaurants)
-      navigate(`/restaurants/${response.data.restaurants._id}`);
+      console.log(response.data)
+      navigate(`/restaurants/${response.data.restaurantResponse.insertedId}`);
       //props.onAuthenticated(true, response.data.token);
     })
     .catch(err => console.log(err))
@@ -58,7 +58,7 @@ const Create = () => {
       <Container>
 
         <div class="header-text">
-        <Typography variant="h2">Create a new restaurant</Typography>
+        <Typography variant="h2">Create Restaurant</Typography>
       </div>
 
       <div class="short-top">
@@ -70,16 +70,19 @@ const Create = () => {
       <TextField label="Name" fullWidth sx={{ s: 1 }} variant="standard" name="name" onChange={handleForm} /> <br />
       </div>
 
-
-      <div class="header-text">
-        <Typography variant="h3">Address:</Typography>
+      <div className="form-group form-top">
+      <TextField label="Borough" fullWidth sx={{ s: 1 }} variant="standard" name="borough" onChange={handleForm} /> <br />
       </div>
 
       <div className="form-group form-top">
+      <TextField label="Cuisine" fullWidth sx={{ s: 1 }} variant="standard" name="cuisine" onChange={handleForm} /> <br />
+      </div>
+
+      {/* <div className="form-group form-top">
       <TextField label="Building" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="building" onChange={handleForm} /> <br />
-      </div>
+      </div> */}
 
-      <div className="form-group form-top">
+      {/* <div className="form-group form-top">
       <TextField label="Co-ordinates" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="coord" onChange={handleForm} /> <br />
       </div>
 
@@ -89,22 +92,14 @@ const Create = () => {
 
       <div className="form-group form-top">
       <TextField label="Zip Code" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="zipcode" onChange={handleForm} /> <br />
-      </div>
-
-      <div className="form-group form-top">
-      <TextField label="Borough" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="borough" onChange={handleForm} /> <br />
-      </div>
-
-      <div className="form-group form-top">
-      <TextField label="Cuisine" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="cuisine" onChange={handleForm} /> <br />
-      </div>
+      </div> */}
 
 
-      <div class="header-text">
+      {/* <div class="header-text">
         <Typography variant="h3">Rating:</Typography>
-      </div>
+      </div> */}
 
-      <div className="form-group form-top">
+      {/* <div className="form-group form-top">
         <TextField
         id="datetime-local"
         label="Date"
@@ -117,17 +112,17 @@ const Create = () => {
           shrink: true,
         }}
         /> 
-      </div>
+      </div> */}
 
-      <div className="form-group form-top">
+      {/* <div className="form-group form-top">
       <TextField label="Grade" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="grade" onChange={handleForm} /> <br />
       </div>
 
       <div className="form-group form-top">
       <TextField label="Score" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="score" onChange={handleForm} /> <br />
-      </div>
+      </div> */}
 
-
+{/* //////////////////////////////// */}
 
       {/* <div className="form-group">
       <FormControl variant="filled" fullWidth>

@@ -79,7 +79,7 @@ if(authenticated){
 
 
         <Route path="/profile" element={<Profile />} />
-        <Route path="/update-preferences" element={<UpdatePreferences />} />
+        <Route path="/restaurants/:id/update-preferences" element={<UpdatePreferences />} />
 
         {protectedRestaurants}
         <Route path="/about" element={<About />} />

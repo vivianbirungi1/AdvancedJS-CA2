@@ -247,7 +247,7 @@ const Show = () => {
 
     <div class="centertext content-spacing">
       <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
-      <Link to="/update-preferences" style={{ textDecoration: 'none' }}> <Button variant="outlined">Update</Button> </Link>
+      <Link to="update-preferences" style={{ textDecoration: 'none' }}> <Button variant="outlined">Update</Button> </Link>
       </div>
 
             

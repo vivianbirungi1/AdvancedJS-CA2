@@ -5,6 +5,9 @@ import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@m
 //import { LocalizationProvider, DateTimePicker } from '@mui/lab'
 //import DateAdapter form '@mui/lab/AdapterMoment'
 import { useNavigate, useParams  } from 'react-router';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import {Link} from 'react-router-dom'
 
 const UpdatePreferences = () => {
   
@@ -13,21 +16,21 @@ const UpdatePreferences = () => {
   let { id } = useParams()
 
   const [form, setForm] = useState({})
-  const [restaurant, setRestaurant] = useState({})
+  const [restaurant, setRestaurant] = useState(null)
 
   let token = localStorage.getItem('token')
 
   useEffect(() => {
-      axios.put(`http://localhost:8001/restaurants/update-preferences/${id}`, {
+      axios.get(`http://localhost:8001/restaurants/${id}`, {
           headers: {
               "Authorization": `Bearer ${token}`
           }
       })
       .then(response => {
-          console.log(response.data)
-          navigate(`/profile/${response.data._id}`);
-         // setRestaurant(response.data)
-         // setForm(response.data)
+          console.log(response.data.restaurant)
+      //  navigate(`/profile/${response.data._id}`);
+          setRestaurant(response.data.restaurant)
+          setForm(response.data.restaurant)
       })
       .catch(err => {
           console.log(`Error: ${err}`)
@@ -35,13 +38,14 @@ const UpdatePreferences = () => {
   }, [id, token])
 
  
-  useEffect(() => (
-    setForm({
-      name: restaurant.name,
-      email: restaurant.email,
-      password: restaurant.password
-    })
-  ), [restaurant])
+  // useEffect(() => (
+  //   setForm({
+  //     name: restaurant.name,
+  //     cuisine: restaurant.cusine,
+  //     borough: restaurant.borough,
+  //     restaurant_id: restaurant_id
+  //   })
+  // ), [restaurant])
 
   if(!restaurant) return null
 
@@ -63,14 +67,14 @@ const UpdatePreferences = () => {
     let token = localStorage.getItem('token')
 
     //can just pass in form
-    axios.post(`http://localhost:8001/restaurants/${id}`, form, {
+    axios.put(`http://localhost:8001/restaurants/${id}`, form, {
       headers: {
         "Authorization": `Bearer ${token}`
     }
     })
     .then(response => {
-      console.log(response.data)
-      navigate(`/restaurants/${response.data._id}`);
+      console.log(response.data.restaurant)
+      navigate(`/restaurants/${id}`);
 
       //
      // setAuthenticated(true)
@@ -83,45 +87,41 @@ const UpdatePreferences = () => {
   //   fontWeight: "bold"
   // }
 
-  const Loading = () => {
-    return(<div className="form-group">Loading...</div>)
-  }
+  // const Loading = () => {
+  //   return(<div className="form-group">Loading...</div>)
+  // }
 
     return (
-      <>
-        <h2>Update Restaurant</h2>
+      <Container>
+
+      <div class="header-text">
+        <Typography variant="h2">Update Restaurant</Typography>
+        </div>
+
+        <div class="short-top">
+        <img src="https://cdn.dribbble.com/users/2008861/screenshots/15229706/media/b60d6e61e33e46d933dc33361cfddb41.gif?compress=1&resize=1150x350"></img>
+        
+      </div>
 
         {/* conditionally rendering form with if statement */}
 
-        {
-          form.title ? (
+        <div className="form-group form-top">
+      <TextField label="Name" fullWidth sx={{ s: 1 }} variant="standard" name="name" onChange={handleForm} value={form.name} InputLabelProps = {{shrink:true,}} /> <br />
+      </div>
 
-            <TextField label="Name" variant="filled" name="name" onChange={handleForm} value={form.name} InputLabelProps={{
-              shrink: true,
-            }} /> 
+      <div className="form-group form-top">
+      <TextField label="Borough" fullWidth sx={{ s: 1 }}  variant="standard" name="borough" onChange={handleForm} value={form.borough} InputLabelProps = {{shrink:true,}} /> <br />
+      </div>
 
-     ) : (<Loading />)
-        }
+      <div className="form-group form-top">
+      <TextField label="Cuisine" fullWidth sx={{ s: 1 }} variant="standard" name="cuisine" onChange={handleForm} value={form.cuisine} InputLabelProps = {{shrink:true,}} /> <br />
+      </div>
 
-{
-          form.email ? (
+      <div className="form-group form-top">
+      <TextField label="RestaurantID" fullWidth sx={{ s: 1 }} variant="standard" name="restaurant_id" onChange={handleForm} value={form.restaurant_id} InputLabelProps = {{shrink:true,}} /> <br />
+      </div>
 
-            <TextField label="Email" variant="filled" name="email" onChange={handleForm} value={form.email} InputLabelProps={{
-              shrink: true,
-            }} />
 
-     ) : (<Loading />)
-        }
-
-{
-          form.password ? (
-
-            <TextField label="Password" type="password" variant="filled" name="password" onChange={handleForm} value={form.password} InputLabelProps={{
-              shrink: true,
-            }} />
-
-     ) : (<Loading />)
-        }
 
       
 
@@ -207,8 +207,12 @@ const UpdatePreferences = () => {
 
       {/* <button style={styles} onClick={submitForm}>Submit</button> */}
 
-      <Button onClick={submitForm} variant="contained">Submit</Button>
-      </>
+      <div class="content-spacing centertext">
+      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
+      <Button onClick={submitForm} variant="outlined">Submit</Button>
+      </div>
+
+      </Container>
     )
   }
   
