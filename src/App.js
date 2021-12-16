@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 //COMPONENTS
 import Navbar from './components/Navbar'
 import Register from './components/Register'
+import Login from './components/Login';
+import Profile from './components/Profile';
 
 //PAGES
 import Home from './pages/Home';
@@ -17,13 +19,14 @@ import RestaurantsShow from './pages/restaurants/Show';
 import RestaurantsCreate from './pages/restaurants/Create';
 
 //NEIGHBORHOODS
-import NeighborhoodsIndex from './pages/neighborhoods/Index';
+//import NeighborhoodsIndex from './pages/neighborhoods/Index';
 
 //USER
-import Login from './pages/users/Login';
-import Profile from './pages/users/Profile'
-import UpdatePreferences from './pages/users/UpdatePreferences'
-import CreateAdmin from './pages/users/CreateAdmin'
+
+import UpdatePreferences from './pages/restaurants/UpdatePreferences';
+// import CreateAdmin from './pages/users/CreateAdmin';
+import UsersIndex from './pages/users/Index';
+import UsersShow from './pages/users/Show';
 
 const App = () => {
 
@@ -57,7 +60,9 @@ if(authenticated){
   <Route path="/restaurants/create" element={<RestaurantsCreate /> } /> 
  
    <Route path="/restaurants/:id" element={<RestaurantsShow /> } /> 
-   <Route path="/neighborhoods" element={<NeighborhoodsIndex />} />
+   <Route path="/users/:id" element={<UsersShow /> } /> 
+
+   {/* <Route path="/neighborhoods" element={<NeighborhoodsIndex />} /> */}
 
 
   </>
@@ -70,6 +75,8 @@ if(authenticated){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<RestaurantsIndex />} />
+        <Route path="/users" element={<UsersIndex />} />
+
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/update-preferences" element={<UpdatePreferences />} />
@@ -77,7 +84,7 @@ if(authenticated){
         {protectedRestaurants}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/createadmin" element={<CreateAdmin />} />
+        {/* <Route path="/createadmin" element={<CreateAdmin />} /> */}
         
         <Route path="/login" element={<Login onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
         <Route path="/register" element={<Register onAuthenticated={onAuthenticated} authenticated={authenticated} />} />

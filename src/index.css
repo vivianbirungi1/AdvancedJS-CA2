@@ -11,3 +11,71 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.column {
+  float: left;
+  flex: 50%;
+}
+
+.row {
+  display: flex;
+}
+
+.image-top{
+  margin-top: 30px;
+}
+
+.short-top{
+  margin-top: 20px;
+}
+
+.content-spacing{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.form-top{
+  margin-top: 40px;
+}
+
+.text-top{
+  margin-top: 170px;
+}
+
+.text-topmain{
+  margin-top: 90px;
+}
+
+.header-text{
+  margin-top: 30px;
+  text-align: center;
+}
+
+.div-spacing{
+  margin-top: 100px;
+}
+
+.card-space{
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.card-space2{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.text-space{
+  margin-left: 30px;
+}
+
+.blackbg{
+  background-color: rgb(255, 217, 0);
+  width: 100%;
+}
+
+.centertext{
+  text-align: center;
+}
+
+

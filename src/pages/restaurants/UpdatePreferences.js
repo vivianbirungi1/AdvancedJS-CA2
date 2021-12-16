@@ -1,4 +1,4 @@
-//edit  a user
+//edit  a restaurant
 import { useState, useEffect } from 'react' 
 import axios from 'axios'
 import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@mui/material';
@@ -13,12 +13,12 @@ const UpdatePreferences = () => {
   let { id } = useParams()
 
   const [form, setForm] = useState({})
-  const [user, setUser] = useState({})
+  const [restaurant, setRestaurant] = useState({})
 
   let token = localStorage.getItem('token')
 
   useEffect(() => {
-      axios.put(`http://localhost:8001/users/update-preferences`, {
+      axios.put(`http://localhost:8001/restaurants/update-preferences/${id}`, {
           headers: {
               "Authorization": `Bearer ${token}`
           }
@@ -26,7 +26,7 @@ const UpdatePreferences = () => {
       .then(response => {
           console.log(response.data)
           navigate(`/profile/${response.data._id}`);
-         // setUser(response.data)
+         // setRestaurant(response.data)
          // setForm(response.data)
       })
       .catch(err => {
@@ -37,13 +37,13 @@ const UpdatePreferences = () => {
  
   useEffect(() => (
     setForm({
-      name: user.name,
-      email: user.email,
-      password: user.password
+      name: restaurant.name,
+      email: restaurant.email,
+      password: restaurant.password
     })
-  ), [user])
+  ), [restaurant])
 
-  if(!user) return null
+  if(!restaurant) return null
 
 
   const handleForm = e => {
@@ -63,14 +63,14 @@ const UpdatePreferences = () => {
     let token = localStorage.getItem('token')
 
     //can just pass in form
-    axios.post('http://localhost:8001/users', form, {
+    axios.post(`http://localhost:8001/restaurants/${id}`, form, {
       headers: {
         "Authorization": `Bearer ${token}`
     }
     })
     .then(response => {
       console.log(response.data)
-      navigate(`/users/${response.data._id}`);
+      navigate(`/restaurants/${response.data._id}`);
 
       //
      // setAuthenticated(true)
@@ -89,7 +89,7 @@ const UpdatePreferences = () => {
 
     return (
       <>
-        <h2>Update Preferences</h2>
+        <h2>Update Restaurant</h2>
 
         {/* conditionally rendering form with if statement */}
 
@@ -102,8 +102,6 @@ const UpdatePreferences = () => {
 
      ) : (<Loading />)
         }
-
-
 
 {
           form.email ? (
@@ -140,12 +138,12 @@ const UpdatePreferences = () => {
       </div> */}
 
       {/* <div className="form-group">
-      <TextField label="Email" multiline rows="4" variant="filled" name="email" onChange={handleForm} value={user.email} InputLabelProps={{
+      <TextField label="Email" multiline rows="4" variant="filled" name="email" onChange={handleForm} value={restaurant.email} InputLabelProps={{
           shrink: true,
         }} /> <br />
       </div> */}
 
-      {/* <div className="form-group" value={user.grades} InputLabelProps={{
+      {/* <div className="form-group" value={restaurant.grades} InputLabelProps={{
           shrink: true,
         }}>
       <FormControl variant="filled" fullWidth>
@@ -171,7 +169,7 @@ const UpdatePreferences = () => {
 
       </LocalizationProvider> */}
 
-      {/* <div className="form-group" value={user.start_date}> 
+      {/* <div className="form-group" value={restaurant.start_date}> 
         <TextField
         id="datetime-local"
         label="Start Date"
@@ -187,7 +185,7 @@ const UpdatePreferences = () => {
         /> 
       </div> */}
 
-      {/* <div className="form-group" value={user.end_date}>
+      {/* <div className="form-group" value={restaurant.end_date}>
         <TextField
         id="datetime-local"
         label="End Date"

@@ -2,6 +2,10 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
 import { Link } from 'react-router-dom'
+import React from 'react';
+import {TextField, Button} from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 const Index = () => {
     //by default useState is a blank array
@@ -27,22 +31,44 @@ const Index = () => {
     const restaurantsList = restaurants.map(restaurant => {
        return <div key={restaurant._id}>
            
-           <p><b>Name:</b> <Link to={`/restaurants/${restaurant._id}`} >{restaurant.name}</Link> </p>
-            <p><b>Location:</b> {restaurant.borough} </p>
-            <p><b>Specialty:</b> {restaurant.cuisine} </p>
+            <div class="">
+           <Typography variant="p"><b>Name:</b> <Link to={`/restaurants/${restaurant._id}`} >{restaurant.name}</Link> </Typography>
+           </div>
+
+            <div class="">
+            <Typography variant="p"><b>Location:</b> {restaurant.borough} </Typography>
+            </div>
+
+            <div class="">
+            <Typography variant="p"><b>Specialty:</b> {restaurant.cuisine} </Typography>
+            </div>
             <hr />
         </div>
     })
 
 
     return (
-      <div>
-        <h2>All Restaurants</h2>
-        <Link to="create">Create a restaurant</Link>  
-        <p>This is the restaurants index page</p>
+        <Container>
+
+
+      <div class="short-top">
+        <Typography variant="h2">All Restaurants</Typography>
+        </div>
+
+        <div class="short-top">
+        <img src="https://cdn.dribbble.com/users/2008861/screenshots/14293050/media/81c828595bd4135765fa3df8087dd467.gif?compress=1&resize=1150x350"></img>
+        
+      </div>
+
+        <div class="centertext short-top">
+        <Link to="create" style={{ textDecoration: 'none' }}> <Button variant="contained">Create a Restaurant</Button> </Link>
+        </div>  
+
         {/* gets you first index within that array */}
         { restaurantsList } 
-      </div>
+      
+
+      </Container>
     )
   }
   

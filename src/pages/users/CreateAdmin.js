@@ -52,7 +52,7 @@ const CreateAdmin = () => {
   
     return (
       <>
-        <h2>Create an Admin</h2>
+        <h2>Add a new Staff Member</h2>
 
         <div className="form-group">
         <TextField label="Name" variant="outlined" name= "name" onChange={handleForm} /> <br />

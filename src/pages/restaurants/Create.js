@@ -5,6 +5,10 @@ import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@m
 //import { LocalizationProvider, DateTimePicker } from '@mui/lab'
 //import DateAdapter form '@mui/lab/AdapterMoment'
 import { useNavigate  } from 'react-router';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import {Link} from 'react-router-dom'
+
 
 const Create = () => {
 
@@ -30,14 +34,14 @@ const Create = () => {
 
 
     //can just pass in form
-    axios.post('/restaurants', form, {
+    axios.post(`/restaurants`, form, {
       headers: {
         "Authorization": `Bearer ${token}`
     }
     })
     .then(response => {
-      console.log(response.data)
-      navigate(`/restaurants/${response.data._id}`);
+      console.log(response.data.restaurants)
+      navigate(`/restaurants/${response.data.restaurants._id}`);
       //props.onAuthenticated(true, response.data.token);
     })
     .catch(err => console.log(err))
@@ -51,63 +55,76 @@ const Create = () => {
 
 
     return (
-      <>
-        <h2>Create a new Restaurant</h2>
+      <Container>
 
-      <div className="form-group">
-      <TextField label="Name" variant="filled" name="name" onChange={handleForm} /> <br />
+        <div class="header-text">
+        <Typography variant="h2">Create a new restaurant</Typography>
       </div>
 
-      <h3>Address:</h3>
-
-      <div className="form-group">
-      <TextField label="Building" multiline rows="4" variant="filled" name="building" onChange={handleForm} /> <br />
+      <div class="short-top">
+        <img src="https://cdn.dribbble.com/users/2008861/screenshots/15710250/media/44da8914930d23f079a467e2eff5bdd3.gif?compress=1&resize=1150x350"></img>
+        
       </div>
 
-      <div className="form-group">
-      <TextField label="Co-ordinates" multiline rows="4" variant="filled" name="coord" onChange={handleForm} /> <br />
+      <div className="form-group form-top">
+      <TextField label="Name" fullWidth sx={{ s: 1 }} variant="standard" name="name" onChange={handleForm} /> <br />
       </div>
 
-      <div className="form-group">
-      <TextField label="Street" multiline rows="4" variant="filled" name="street" onChange={handleForm} /> <br />
+
+      <div class="header-text">
+        <Typography variant="h3">Address:</Typography>
       </div>
 
-      <div className="form-group">
-      <TextField label="Zip Code" multiline rows="4" variant="filled" name="zipcode" onChange={handleForm} /> <br />
+      <div className="form-group form-top">
+      <TextField label="Building" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="building" onChange={handleForm} /> <br />
       </div>
 
-      <div className="form-group">
-      <TextField label="Borough" multiline rows="4" variant="filled" name="borough" onChange={handleForm} /> <br />
+      <div className="form-group form-top">
+      <TextField label="Co-ordinates" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="coord" onChange={handleForm} /> <br />
       </div>
 
-      <div className="form-group">
-      <TextField label="Cuisine" multiline rows="4" variant="filled" name="cuisine" onChange={handleForm} /> <br />
+      <div className="form-group form-top">
+      <TextField label="Street" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="street" onChange={handleForm} /> <br />
       </div>
 
-      <h3>Rating:</h3>
+      <div className="form-group form-top">
+      <TextField label="Zip Code" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="zipcode" onChange={handleForm} /> <br />
+      </div>
 
-      <div className="form-group">
+      <div className="form-group form-top">
+      <TextField label="Borough" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="borough" onChange={handleForm} /> <br />
+      </div>
+
+      <div className="form-group form-top">
+      <TextField label="Cuisine" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="cuisine" onChange={handleForm} /> <br />
+      </div>
+
+
+      <div class="header-text">
+        <Typography variant="h3">Rating:</Typography>
+      </div>
+
+      <div className="form-group form-top">
         <TextField
         id="datetime-local"
         label="Date"
         type="datetime-local"
-        variant="filled"
+        variant="standard"
         name="date"
+        fullWidth sx={{ s: 1 }}
         onChange={handleForm}
         InputLabelProps={{
           shrink: true,
         }}
-
-
         /> 
       </div>
 
-      <div className="form-group">
-      <TextField label="Grade" multiline rows="4" variant="filled" name="grade" onChange={handleForm} /> <br />
+      <div className="form-group form-top">
+      <TextField label="Grade" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="grade" onChange={handleForm} /> <br />
       </div>
 
-      <div className="form-group">
-      <TextField label="Score" multiline rows="4" variant="filled" name="score" onChange={handleForm} /> <br />
+      <div className="form-group form-top">
+      <TextField label="Score" fullWidth sx={{ s: 1 }} multiline rows="4" variant="standard" name="score" onChange={handleForm} /> <br />
       </div>
 
 
@@ -159,8 +176,13 @@ const Create = () => {
 
       {/* <button style={styles} onClick={submitForm}>Submit</button> */}
 
-      <Button onClick={submitForm} variant="contained">Submit</Button>
-      </>
+
+      <div class="content-spacing centertext">
+      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
+      <Button onClick={submitForm} variant="outlined">Submit</Button>
+      </div>
+
+      </Container>
     )
   }
   
