@@ -1,8 +1,9 @@
 //all restaurants
-import axios from 'axios'
+//import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
 import { Link } from 'react-router-dom'
 import React from 'react';
+import axios from '../../config'
 import {TextField, Button} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -12,7 +13,7 @@ const Index = () => {
     const [restaurants, setRestaurants] = useState(null)
 
     useEffect(() => {
-        axios.get('http://localhost:8001/restaurants')
+        axios.get('/restaurants')
         .then(response => {
             console.log(response.data.restaurants) //retrieving restaurant data
             setRestaurants(response.data.restaurants)

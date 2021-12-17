@@ -1,13 +1,14 @@
 //edit  a restaurant
 import { useState, useEffect } from 'react' 
-import axios from 'axios'
+//import axios from 'axios'
 import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@mui/material';
 //import { LocalizationProvider, DateTimePicker } from '@mui/lab'
 //import DateAdapter form '@mui/lab/AdapterMoment'
 import { useNavigate, useParams  } from 'react-router';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import axios from '../../config';
 
 const UpdatePreferences = () => {
   
@@ -21,7 +22,7 @@ const UpdatePreferences = () => {
   let token = localStorage.getItem('token')
 
   useEffect(() => {
-      axios.get(`http://localhost:8001/restaurants/${id}`, {
+      axios.get(`/restaurants/${id}`, {
           headers: {
               "Authorization": `Bearer ${token}`
           }
@@ -67,7 +68,7 @@ const UpdatePreferences = () => {
     let token = localStorage.getItem('token')
 
     //can just pass in form
-    axios.put(`http://localhost:8001/restaurants/${id}`, form, {
+    axios.put(`/restaurants/${id}`, form, {
       headers: {
         "Authorization": `Bearer ${token}`
     }

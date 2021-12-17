@@ -1,5 +1,6 @@
 import { useState } from 'react' 
-import axios from 'axios'
+//import axios from 'axios'
+import axios from '../config'
 import {TextField, Button} from '@mui/material';
 //import { useNavigate  } from 'react-router';
 import Typography from '@mui/material/Typography';
@@ -30,7 +31,7 @@ const Register = props => {
   // let token = localStorage.setItem('token')
 
     //can just pass in form rather than specifing form fields - works for multiple different forms
-    axios.post('http://localhost:8001/users/register', form, {
+    axios.post('/users/register', form, {
     //   headers: {
     //     "Authorization": `Bearer ${token}`
     // }

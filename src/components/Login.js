@@ -1,5 +1,6 @@
 import { useState } from 'react' 
-import axios from 'axios'
+//import axios from 'axios'
+import axios from '../config'
 import {TextField, Button} from '@mui/material';
 import { useNavigate  } from 'react-router';
 import Typography from '@mui/material/Typography';
@@ -29,7 +30,7 @@ const Login = props => {
     console.log(form)
 
     //can just pass in form rather than specifing form fields - works for multiple different forms
-    axios.post('http://localhost:8001/users/login', {
+    axios.post('/users/login', {
       name: form.name,  
       email: form.email,
       password: form.password

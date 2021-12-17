@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import axios from '../config'
 
 const About = () => {
 
@@ -47,6 +48,7 @@ const About = () => {
       </div>
       <div class="short-top">
      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">View Restaurants</Button> </Link>
+     <Link to="/" style={{ textDecoration: 'none' }}> <Button variant="outlined">Home</Button> </Link> 
      </div>
       </div>
       </div>

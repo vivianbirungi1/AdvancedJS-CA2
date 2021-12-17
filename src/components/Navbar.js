@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import * as React from 'react';
+import axios from '../config'
 //import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button,Tooltip, MenuItem } from '@mui/material';
 //import { MenuIcon } from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
@@ -106,13 +107,13 @@ const Navbar = props => {
 
   }
 
-  const pages = [<Link to="/" style={{ textDecoration: 'none' }}>Home</Link>, <Link to="about">About</Link>, <Link to="restaurants"> Restaurants</Link>, <Link to="contact">Contact</Link>];
-  const settings = [<Link to="register">{registerButton}</Link>, <Link to="login">{loginButton}</Link>, <Link to="profile">{profileButton}</Link>, <Link to="/">{logoutButton}</Link>];
+  const pages = [<Link className='link' to="/" style={{ textDecoration: 'none' }}>Home</Link>, <Link className='link' to="about" style={{ textDecoration: 'none' }}>About</Link>, <Link className='link' to="restaurants" style={{ textDecoration: 'none' }}> Restaurants</Link>, <Link className='link' to="contact" style={{ textDecoration: 'none' }}>Contact</Link>];
+  const settings = [<Link className='link' to="register" style={{ textDecoration: 'none' }}>{registerButton}</Link>, <Link className='link' to="login" style={{ textDecoration: 'none' }}>{loginButton}</Link>, <Link className='link' to="profile" style={{ textDecoration: 'none' }}>{profileButton}</Link>, <Link className='link' to="/" style={{ textDecoration: 'none' }}>{logoutButton}</Link>];
 
   
   
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{backgroundColor: '#000000'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

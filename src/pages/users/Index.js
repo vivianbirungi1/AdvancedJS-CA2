@@ -1,14 +1,15 @@
 //all users
-import axios from 'axios'
+//import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
 import { Link } from 'react-router-dom'
+import axios from '../../config'
 
 const Index = () => {
     //by default useState is a blank array
     const [users, setUsers] = useState(null)
 
     useEffect(() => {
-        axios.get('http://localhost:8001/users')
+        axios.get('/users')
         .then(response => {
             console.log(response.data.users) //retrieving user data
             setUsers(response.data.users)

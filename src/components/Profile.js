@@ -1,42 +1,47 @@
 import {Link} from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+//import axios from 'axios'
+import axios from '../config'
 import { useEffect, useState } from 'react'
 
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+
 const Profile = () => {
-
-//   let { id } = useParams()
-//   const [user, setUser] = useState(null)
-
-//   let token = localStorage.getItem('token')
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:8001/users/${id}`, {
-//         headers: {
-//             "Authorization": `Bearer ${token}`
-//         }
-//     })
-//     .then(response => {
-//         console.log(response.data.user)
-//         setUser(response.data.user)
-//     })
-//     .catch(err => {
-//         console.log(`Error: ${err}`)
-//     })
-// })
-
-// if(!user) return null
   
     return (
-      <div>
-        <h2>Profile</h2>
+      <Container>
 
-        {/* <p>{user.name}</p> */}
+        <div class="short-top centertext">
+        <Typography variant="h2">Profile</Typography>
+        </div>
 
-        {/* <Link to="/createadmin">Create Admin</Link> |  */}
-        <Link to="/users">All Staff</Link> | 
-        
+        <div class="row short-top">
+    
+      <div class="col-6">
+      <div class="image-top">
+        <img class="imageradius" src="https://cdn.dribbble.com/users/1202728/screenshots/4166158/media/5e4e7086c94960c6239de0ee9f64b2a4.gif" 
+        height="450"
+        width="650" />
       </div>
+      </div>
+
+      <div class="col-6 card-space text-top">
+      <div>
+      <Link to="/users">All Staff</Link>      
+      </div>
+      </div>
+      </div>
+
+
+        
+      </Container>
     )
   }
   

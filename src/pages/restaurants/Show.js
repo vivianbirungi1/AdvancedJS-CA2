@@ -1,7 +1,7 @@
 //show one restaurant by id
 
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+//import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
 import {Link} from 'react-router-dom'
 import Typography from '@mui/material/Typography';
@@ -14,7 +14,10 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import React from 'react';
+import axios from '../../config'
 import {TextField, Button} from '@mui/material';
+import { useNavigate  } from 'react-router';
+
 
 const style = {
     position: 'absolute',
@@ -27,9 +30,32 @@ const style = {
     boxShadow: 24,
     p: 4,
   };
+
+  
   
 
 const Show = () => {
+
+  let navigate = useNavigate()
+
+  const deleteRestaurants = () => {
+    console.log("delete test")
+    console.log(restaurant)
+
+    //can just pass in form rather than specifing form fields - works for multiple different forms
+    axios.delete(`/restaurants/${id}`, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => {
+      console.log(response.data.restaurant)
+     // props.onAuthenticated(true, response.data.auth_token);
+      navigate('/restaurants');
+
+    })
+    .catch(err => console.log(err))
+  }
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -41,13 +67,13 @@ const Show = () => {
     let token = localStorage.getItem('token')
 
     useEffect(() => {
-        axios.get(`http://localhost:8001/restaurants/${id}`, {
+        axios.get(`/restaurants/${id}`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
         .then(response => {
-            console.log(response.data.restaurant)
+            // console.log(response.data)
             setRestaurant(response.data.restaurant)
         })
         .catch(err => {
@@ -75,6 +101,8 @@ const Show = () => {
 
         <div class="centertext short-top">
         <Button onClick={handleOpen} variant="contained">Book Now</Button>
+        <Button onClick={deleteRestaurants} variant="outlined">Delete</Button> 
+
         </div>
 
         <Modal
@@ -101,6 +129,7 @@ const Show = () => {
       </div>
       <div class="short-top">
           <Button onClick={handleClose} variant="contained">Submit</Button>
+
           </div>
         </Box>
       </Modal>

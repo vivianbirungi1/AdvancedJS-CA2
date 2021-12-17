@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import axios from '../config'
 
 const style = {
   position: 'absolute',
@@ -55,7 +56,8 @@ const Contact = () => {
         </div>
 
         <div class="content-spacing centertext">
-      <Button onClick={handleOpen} variant="contained">Submit</Button>
+        <Link to="/" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
+      <Button onClick={handleOpen} variant="outlined">Submit</Button>
      </div>
 
      <Modal

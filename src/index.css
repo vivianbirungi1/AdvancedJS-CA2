@@ -17,6 +17,15 @@ code {
   flex: 50%;
 }
 
+.link{
+  color: #ffffff;
+
+}
+
+.imageradius{
+  border-radius: 50%;
+}
+
 .row {
   display: flex;
 }
