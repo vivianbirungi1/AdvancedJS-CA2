@@ -73,20 +73,18 @@ const Show = () => {
             }
         })
         .then(response => {
-            // console.log(response.data)
+             console.log(response.data.restaurant)
             setRestaurant(response.data.restaurant)
         })
         .catch(err => {
             console.log(`Error: ${err}`)
         })
-    })
+    },[id])
 
     if(!restaurant) return null
   
     return (
         <Container>
-
-
         
       <div class="short-top">
         <Typography variant="h2"> {restaurant.name}</Typography>

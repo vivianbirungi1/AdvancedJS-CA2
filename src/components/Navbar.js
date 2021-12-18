@@ -99,7 +99,7 @@ const Navbar = props => {
 //
       <>
    
-     <Button onClick={ profile }>Profile</Button>
+     <Button onClick={ profile }>Dashboard</Button>
 
      </>
   

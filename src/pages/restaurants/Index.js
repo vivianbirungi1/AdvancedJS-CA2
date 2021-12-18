@@ -4,9 +4,13 @@ import { useEffect, useState } from 'react' //using hooks from react
 import { Link } from 'react-router-dom'
 import React from 'react';
 import axios from '../../config'
-import {TextField, Button} from '@mui/material';
+import {TextField, Button, Grid} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 const Index = () => {
     //by default useState is a blank array
@@ -29,22 +33,31 @@ const Index = () => {
     if(!restaurants) return null
 
     //display all restaurants
-    const restaurantsList = restaurants.map(restaurant => {
-       return <div key={restaurant._id}>
-           
-            <div class="">
-           <Typography variant="p"><b>Name:</b> <Link to={`/restaurants/${restaurant._id}`} >{restaurant.name}</Link> </Typography>
-           </div>
-
-            <div class="">
-            <Typography variant="p"><b>Location:</b> {restaurant.borough} </Typography>
-            </div>
-
-            <div class="">
-            <Typography variant="p"><b>Specialty:</b> {restaurant.cuisine} </Typography>
-            </div>
-            <hr />
-        </div>
+    const restaurantsList = restaurants.map((restaurant) => {
+       return (
+ 
+           <Grid item  xs={12} md={3} key={restaurant._id}>
+     
+         <Card container={1} spacing={8} columns={4} sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+        <b>Name:</b> <Link class="link2" style={{ textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`} >{restaurant.name}</Link>
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <b>Location:</b> {restaurant.borough}
+        </Typography>
+        <Typography variant="body2">
+        <b>Specialty:</b> {restaurant.cuisine}
+        </Typography>
+      </CardContent>
+      <CardActions>
+      <Link class="link2" style={{ textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`} ><Button size="small">View Restaurant</Button></Link>
+        
+      </CardActions>
+    </Card>
+    </Grid>
+      
+       )    
     })
 
 
@@ -66,7 +79,14 @@ const Index = () => {
         </div>  
 
         {/* gets you first index within that array */}
+
+<div class="short-top">
+<Box>
+        <Grid container spacing={1} columns={12}>
         { restaurantsList } 
+        </Grid>
+        </Box>
+        </div>
       
 
       </Container>
