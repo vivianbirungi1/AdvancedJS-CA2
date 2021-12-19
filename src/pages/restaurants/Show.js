@@ -159,15 +159,15 @@ const Show = () => {
       {/* second card */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Á Lá Carte
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        Jerusalem Artichoke, Hazelnut, Parsley, Truffle
+Scallop Ceviche, Butternut Squash, Foie Gras
+Celeriac, Button Mushroom.
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
@@ -184,15 +184,14 @@ const Show = () => {
       {/* third card */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Lunch
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        Beet "Tartare", Hazelnut, Mustard, Iberico Ham, Seaweed, Taramasalata
+(with Oscietra Caviar - €18 supplement)
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
@@ -209,15 +208,16 @@ const Show = () => {
       {/* fourth card */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Vegan
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        Celeriac, Button Mushroom, Thyme,
+        Beet “Tartare”, Apple, Hazelnut, Dill,
+        Jerusalem Artichoke, Parsley, Truffle,
+        Carrot, Date, Endive
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
@@ -232,15 +232,15 @@ const Show = () => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Vegetarian
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        Autumn Vegetables, Black Truffle,
+        Cheese (Optional Course - €12 supplement),
+        Mango, Pineapple, Praline, Caramelia
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>

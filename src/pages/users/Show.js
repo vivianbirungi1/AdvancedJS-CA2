@@ -13,22 +13,22 @@ const Show = () => {
 
     let navigate = useNavigate()
 
-    // const deleteUsers = () => {
-    //     console.log(user)
+    const deleteUsers = () => {
+        console.log(user)
     
-    //     axios.delete(`/users/${id}`, {
-    //         headers: {
-    //             "Authorization": `Bearer ${token}`
-    //         }
-    //     })
-    //     .then(response => {
-    //       console.log(response.data.user)
-    //      // props.onAuthenticated(true, response.data.auth_token);
-    //       navigate('/users');
+        axios.delete(`/users/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(response => {
+          console.log(response.data.user)
+         // props.onAuthenticated(true, response.data.auth_token);
+          navigate('/users');
     
-    //     })
-    //     .catch(err => console.log(err))
-    //   }
+        })
+        .catch(err => console.log(err))
+      }
 
     let { id } = useParams()
     const [user, setUser] = useState(null)
@@ -76,9 +76,9 @@ const Show = () => {
         </div>
 
 
-            <div class="centertext short-top">
+            <div class="centertext short-top content-spacing">
         <Link style={{ textDecoration: 'none' }} to="/users"> <Button color="warning" variant="contained">Back</Button></Link>
-            {/* <Button color="warning" onClick={deleteUsers} variant="outlined">Delete</Button>  */}
+            <Button color="warning" onClick={deleteUsers} variant="outlined">Delete</Button> 
 
         </div>
            
