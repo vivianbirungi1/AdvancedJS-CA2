@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom'
 
 const Register = props => {
 
- // let navigate = useNavigate()
+  let navigate = useNavigate()
 
   const [form, setForm] = useState(false)
 
@@ -42,6 +42,7 @@ const Register = props => {
       console.log(response.data.auth_token)
      // navigate(`/home/${response.data._id}`);
       props.onAuthenticated(true, response.data.auth_token);
+      navigate('/');
     })
     .catch(err => console.log(err))
   }
