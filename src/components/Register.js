@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom'
 
 const Register = props => {
 
-  let navigate = useNavigate()
+  let navigate = useNavigate() 
 
   const [form, setForm] = useState(false)
 
