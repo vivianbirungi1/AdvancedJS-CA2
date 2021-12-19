@@ -1,4 +1,5 @@
 //all restaurants
+// imports for react and material ui components
 //import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
 import { Link } from 'react-router-dom'
@@ -18,9 +19,13 @@ import { deepOrange } from '@mui/material/colors';
 
 
 const Index = () => {
-    //by default useState is a blank array
+    //by default useState is a blank array - set it to null
     const [restaurants, setRestaurants] = useState(null)
 
+        // use effect hook tells react what to do after the page has rendered
+     // using the axios get request 
+// need to be authorized so passing in the bearer token
+    // setting restaurant state and returning the restaurant response for when page renders
     useEffect(() => {
         axios.get('/restaurants')
         .then(response => {
@@ -38,6 +43,8 @@ const Index = () => {
     if(!restaurants) return null
 
     //display all restaurants
+    //wrapped restaurants list within a grid
+    // set card container and styling so all cards are equally styled
     const restaurantsList = restaurants.map((restaurant) => {
        return (
  
@@ -69,6 +76,7 @@ const Index = () => {
     })
 
 
+    // 
     return (
         <Container>
 
@@ -91,6 +99,7 @@ const Index = () => {
 
         {/* gets you first index within that array */}
 
+{/* wrapped list inside a box and inside that box is a grid so all cards look the same */}
 <div class="short-top">
 <Box>
         <Grid container spacing={1} columns={12}>

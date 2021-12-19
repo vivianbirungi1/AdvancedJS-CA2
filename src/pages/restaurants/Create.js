@@ -1,4 +1,5 @@
 //create  a restaurant
+// imports for react and material ui components
 import { useState } from 'react' 
 import axios from '../../config'
 import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@mui/material';
@@ -16,6 +17,7 @@ const Create = () => {
 
   const [form, setForm] = useState({})
 
+  // handleform method to handle inputs entered into the form
   const handleForm = e => {
   
     setForm(prevState => ({
@@ -26,7 +28,9 @@ const Create = () => {
     console.log(form)
   }
 
-
+// submit form method
+// get token from localstorage as user needs to be authenticated to create a restauarant.
+// axios post reqiest sent to create a new restaurant and add it to the restaurants db
   const submitForm = () => {
     console.log(form)
 

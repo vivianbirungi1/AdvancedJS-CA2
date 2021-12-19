@@ -1,3 +1,4 @@
+// imports fro reavt and material ui componenets
 import Container from '@mui/material/Container';
 //import * as React from 'react';
 import { useEffect, useState } from 'react' //using hooks from react
@@ -22,10 +23,11 @@ import { deepOrange } from '@mui/material/colors';
 
 const Home = props => {
 
-
+// content wrapped in a container
     return (
       <Container>
 
+{/* created a column name in index css to have content side by side */}
         <div class="row">
         <div class="column card-space2">
       <div class="text-topmain">
@@ -51,7 +53,7 @@ Nala Robotics is a fully automatic robotic chef that can automate the entire coo
       </div>
       </div>
 
-      {/* cards */}
+      {/* cards with images and card content, mui component */}
 
       <div class="text-space div-spacing">
         <Typography variant="h5">POPULAR RECIPES</Typography>
@@ -214,7 +216,8 @@ In a statement, they said: “Devastated to have made the very difficult decisio
 
 
 
-    {/* map */}
+{/* back button to take back to previous page */}
+{/* update button to take user to update page */}
       <div class="row">
         <div class="col content-spacing">
     <LoadScript
@@ -239,6 +242,7 @@ In a statement, they said: “Devastated to have made the very difficult decisio
     )
   }
 
+  // defining google map api styles and co-ordinates for the location that appears on the map
   const containerStyle = {
     width: '1150px',
     height: '400px'

@@ -1,5 +1,5 @@
 //show one restaurant by id
-
+// imports for react and material ui components
 import { useParams } from 'react-router-dom'
 //import axios from 'axios'
 import { useEffect, useState } from 'react' //using hooks from react
@@ -19,6 +19,7 @@ import {TextField, Button} from '@mui/material';
 import { useNavigate  } from 'react-router';
 
 
+// styling for pop up modal
 const style = {
     position: 'absolute',
     top: '50%',
@@ -36,12 +37,18 @@ const style = {
 
 const Show = () => {
 
+  // declaring naviagte for the useNavigate method used below
   let navigate = useNavigate()
 
+  // delete restaurant method
   const deleteRestaurants = () => {
     console.log(restaurant)
 
     //can just pass in form rather than specifing form fields - works for multiple different forms
+    // using an axios delete request and looking to delete restaurant by id
+    // authorization is needed so we pass in the bearer token
+    // console logging current restaurant in the console
+    // if unsuccessful the catch will return an error
     axios.delete(`/restaurants/${id}`, {
         headers: {
             "Authorization": `Bearer ${token}`
@@ -62,11 +69,17 @@ const Show = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    // defining the id and restaurant states
     let { id } = useParams()
     const [restaurant, setRestaurant] = useState(null)
 
+    // defining token for passing in the bearer token
     let token = localStorage.getItem('token')
 
+    // use effect hook tells react what to do after the page has rendered
+    // using the axios get request and passiing in the id of specific restaurant we are getting
+    // need to be authorized so passing in the bearer token
+    // setting restaurant state and returning the restaurant response for when page renders
     useEffect(() => {
         axios.get(`/restaurants/${id}`, {
             headers: {
@@ -82,8 +95,13 @@ const Show = () => {
         })
     },[id])
 
+    // if no restaurant , return nothing
     if(!restaurant) return null
   
+    // page wrapped in a contianer with restaurant name at the top, passing in the restaurant name from the db
+    // gif from dribble 
+    // two buttons. Book now handles the modal, when clicked it opens the modal using the handleOpen method
+    // Delete button handles the deleteRestaurant method and triggers out the delete request
     return (
         <Container>
         
@@ -112,6 +130,9 @@ const Show = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+        {/* Box componenent from material UI, passing in the const style from above */}
+        {/* modal header defined within Typography componenet and using a text field to create a date-time field */}
+        {/* Submit button handles close method for the modal */}
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Date and Time:
@@ -137,6 +158,7 @@ const Show = () => {
 
 
 {/* card row for cuisines */}
+{/* passing in cusiiens from backend by accessing restaurant in the db */}
             <div class="div-spacing centertext">
             <Typography variant="h5">Specialty: </Typography>
             </div>
@@ -153,7 +175,7 @@ const Show = () => {
         component="img"
         height="140"
         image="https://cdn.dribbble.com/users/160641/screenshots/14477570/media/89b37143200c0a153e6b16441b021be1.gif"
-        alt="green iguana"
+        alt="dribble gif"
       />
 
       {/* second card */}
@@ -178,7 +200,7 @@ Celeriac, Button Mushroom.
         component="img"
         height="140"
         image="https://cdn.dribbble.com/users/2008861/screenshots/15229706/media/b60d6e61e33e46d933dc33361cfddb41.gif"
-        alt="green iguana"
+        alt="dribble gif"
       />
 
       {/* third card */}
@@ -202,7 +224,7 @@ Celeriac, Button Mushroom.
         component="img"
         height="140"
         image="https://cdn.dribbble.com/users/160641/screenshots/10822233/media/b62dec37ce93d7336be542f66a1c0486.gif"
-        alt="green iguana"
+        alt="dribble gif"
       />
 
       {/* fourth card */}
@@ -228,7 +250,7 @@ Celeriac, Button Mushroom.
         component="img"
         height="140"
         image="https://cdn.dribbble.com/users/614270/screenshots/13802801/media/b78451513f771e068ef7fc0c31c6aefe.gif"
-        alt="green iguana"
+        alt="dribble gif"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -249,6 +271,7 @@ Celeriac, Button Mushroom.
       </div>
 
 
+{/* passing in borough by accessing restaurant from db to show location of specific restaurant */}
             <div class="div-spacing centertext">
             <Typography variant="h5">Location: </Typography>
             </div>
@@ -256,7 +279,8 @@ Celeriac, Button Mushroom.
             <Typography variant="h6"> {restaurant.borough} </Typography>
             </div>
 
-             {/* map */}
+             {/* google map api loaded wuithin a script */}
+             {/* defining the api key used to activate the map */}
       <div class="row">
         <div class="col content-spacing">
     <LoadScript
@@ -275,7 +299,8 @@ Celeriac, Button Mushroom.
       </div>
       </div>
 
-
+{/* back button to take back to previous page */}
+{/* update button to take user to update page */}
     <div class="centertext content-spacing">
       <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button color="warning" variant="contained">Back</Button> </Link> 
       <Link to="update-preferences" style={{ textDecoration: 'none' }}> <Button color="warning" variant="outlined">Update</Button> </Link>
@@ -288,6 +313,7 @@ Celeriac, Button Mushroom.
     )
   }
 
+  // defining google map api styles and co-ordinates for the location that appears on the map
   const containerStyle = {
     width: '1150px',
     height: '400px'
@@ -298,4 +324,5 @@ Celeriac, Button Mushroom.
     lng: -73.9598939
   };
   
+  // exporting show page
   export default Show

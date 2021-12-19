@@ -1,3 +1,4 @@
+// imports for react and material ui components
 import { useLocation } from 'react-router-dom'
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -13,12 +14,14 @@ import Container from '@mui/material/Container';
 
 const PageNotFound = () => {
 
+  // defining loaction - location pathname specified below to show user which location they are on when they are redirected to 404 page. returns what the wrong url was 
   let location = useLocation();
 
   console.log(location)
 
   return (
 
+    // box overlaying image
     <Container>
       <div class="image-top">
 <Card sx={{ maxWidth: 1100 }}>

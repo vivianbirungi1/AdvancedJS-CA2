@@ -1,3 +1,4 @@
+// defining imports for components, pages and react states/router 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
@@ -18,21 +19,20 @@ import RestaurantsIndex from './pages/restaurants/Index';
 import RestaurantsShow from './pages/restaurants/Show';
 import RestaurantsCreate from './pages/restaurants/Create';
 
-//NEIGHBORHOODS
-//import NeighborhoodsIndex from './pages/neighborhoods/Index';
 
 //USER
-
 import UpdatePreferences from './pages/restaurants/UpdatePreferences';
-// import CreateAdmin from './pages/users/CreateAdmin';
 import UsersIndex from './pages/users/Index';
 import UsersShow from './pages/users/Show';
 
 const App = () => {
 
+  // use state allows us to have state variables within a function
   const [authenticated, setAuthenticated] = useState(false)
+  // defining protected restaurants method for pages that need authentication
   let protectedRestaurants
 
+  // getting the token stored in local storage and setting authenticated to true
   useEffect(() => {
     if(localStorage.getItem('token')){
       setAuthenticated(true)
@@ -40,6 +40,8 @@ const App = () => {
 })
 
 //creating a function in App, in Home passing function as a prop
+// if auth is set then store the token in local storage otherwise remote the token
+// this works for login/register/logout
 const onAuthenticated = (auth, token) => {
   setAuthenticated(auth)
   if(auth){
@@ -53,7 +55,7 @@ const onAuthenticated = (auth, token) => {
 
 }
 
-//
+//pages shown if user is authenticated
 if(authenticated){
   protectedRestaurants =(
   <>
@@ -69,6 +71,7 @@ if(authenticated){
   )
 }
 
+// defining route paths, exported pages passed in as elements
   return (
     <Router>
       <Navbar onAuthenticated={onAuthenticated} authenticated={authenticated} />

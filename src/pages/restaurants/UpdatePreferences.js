@@ -1,4 +1,5 @@
 //edit  a restaurant
+// imports for react and material ui components
 import { useState, useEffect } from 'react' 
 //import axios from 'axios'
 import { TextField, MenuItem, FormControl, Select, InputLabel, Button } from '@mui/material';
@@ -12,15 +13,20 @@ import axios from '../../config';
 
 const UpdatePreferences = () => {
   
-
+// passing in id in params
+// defining navigate for where the page goes when form is submitted
   let navigate = useNavigate()
   let { id } = useParams()
 
   const [form, setForm] = useState({})
   const [restaurant, setRestaurant] = useState(null)
 
+  // defining token, getting token stoted in local storage
   let token = localStorage.getItem('token')
 
+  // use effect tells react what the compoennt needs to do after the page renders
+  // axios get request is getting restaurant by id for updating
+  // setform to return the restaurant data in the form
   useEffect(() => {
       axios.get(`/restaurants/${id}`, {
           headers: {
@@ -61,7 +67,9 @@ const UpdatePreferences = () => {
     console.log(form)
   }
 
-
+// submit form method with axios to put method for updating the form
+// getting the restaurant by id and passing in the bearer token for auhtorized users to have access to updating a restaurant
+// navigate to updated restaurant with id after form is submitted and page renders
   const submitForm = () => {
     console.log(form)
 
@@ -92,6 +100,7 @@ const UpdatePreferences = () => {
   //   return(<div className="form-group">Loading...</div>)
   // }
 
+  // form wrapped in a container and textfields styled using material ui
     return (
       <Container>
 
