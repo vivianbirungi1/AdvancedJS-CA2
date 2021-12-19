@@ -123,8 +123,8 @@ const UpdatePreferences = () => {
       </div>
 
       <div class="content-spacing centertext">
-      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
-      <Button onClick={submitForm} variant="outlined">Submit</Button>
+      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button color="warning" variant="contained">Back</Button> </Link> 
+      <Button color="warning" onClick={submitForm} variant="outlined">Submit</Button>
       </div>
 
       </Container>

@@ -5,6 +5,8 @@ import {TextField, Button} from '@mui/material';
 import { useNavigate  } from 'react-router';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {Link} from 'react-router-dom'
+
 
 
 //check if auth is true
@@ -73,9 +75,15 @@ const Login = props => {
         <TextField label="Password" fullWidth sx={{ s: 1 }} variant="standard" type="password" name= "password" onChange={handleForm} />
         </div>
 
+        <div class="short-top">
+        <Typography variant="p">
+          <Link to="/register" >New to the site? Register Now!</Link>
+        </Typography>
+        </div>
+
 
       <div class="content-spacing centertext">
-      <Button onClick={submitForm} variant="contained">Submit</Button>
+      <Button color="warning" onClick={submitForm} variant="contained">Submit</Button>
       </div>
 
 

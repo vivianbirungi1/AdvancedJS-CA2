@@ -84,7 +84,7 @@ const Profile = () => {
       </div>
 
       <div class="content-spacing centertext">
-        <Link to="/" style={{ textDecoration: 'none' }}> <Button variant="outlined">Home</Button> </Link> 
+        <Link to="/" style={{ textDecoration: 'none' }}> <Button color="warning" variant="outlined">Home</Button> </Link> 
      </div>
 
   

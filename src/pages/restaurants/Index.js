@@ -11,6 +11,11 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange } from '@mui/material/colors';
+
 
 const Index = () => {
     //by default useState is a blank array
@@ -37,22 +42,25 @@ const Index = () => {
        return (
  
            <Grid item  xs={12} md={3} key={restaurant._id}>
-     
-         <Card container={1} spacing={8} columns={4} sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
+  
+         <Card container={1} spacing={8} columns={3} sx={{ minWidth: 275 }}>
+      <CardContent class="centertext">
+      <Stack sx={{ marginLeft: "45%"}} direction="row" spacing={2}>
+      <Avatar  sx={{ bgcolor: deepOrange[500] }}>R</Avatar>
+    </Stack>
+        <Typography class="short-top"  variant="p" component="div">
         <b>Name:</b> <Link class="link2" style={{ textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`} >{restaurant.name}</Link>
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <Typography  sx={{ mb: 1.5 }} color="text.secondary">
         <b>Location:</b> {restaurant.borough}
         </Typography>
-        <Typography variant="body2">
+        <Typography  variant="body2">
         <b>Specialty:</b> {restaurant.cuisine}
         </Typography>
       </CardContent>
-      <CardActions>
-      <Link class="link2" style={{ textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`} ><Button size="small">View Restaurant</Button></Link>
-        
+      <CardActions class="centertext content-spacing">
+      <Link class="link2" style={{ textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`} ><Button color="warning" variant="outlined" size="small">View Restaurant</Button></Link>
+
       </CardActions>
     </Card>
     </Grid>
@@ -74,9 +82,12 @@ const Index = () => {
         
       </div>
 
-        <div class="centertext short-top">
-        <Link to="create" style={{ textDecoration: 'none' }}> <Button variant="contained">Create a Restaurant</Button> </Link>
+        <div class="centertext short-top content-spacing">
+        <Link to="create" style={{ textDecoration: 'none' }}> <Button color="warning" variant="contained">Create a Restaurant</Button> </Link>
+        <Link to="/" style={{ textDecoration: 'none' }}> <Button color="warning" variant="outlined">Home</Button> </Link> 
+
         </div>  
+        
 
         {/* gets you first index within that array */}
 
@@ -86,6 +97,11 @@ const Index = () => {
         { restaurantsList } 
         </Grid>
         </Box>
+        </div>
+
+        <div class="centertext short-top content-spacing">
+        <Link style={{ textDecoration: 'none' }} to="/profile"> <Button color="warning" variant="contained">Dashboard</Button></Link>
+
         </div>
       
 

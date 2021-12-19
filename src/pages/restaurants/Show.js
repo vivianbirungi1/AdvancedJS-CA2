@@ -39,7 +39,6 @@ const Show = () => {
   let navigate = useNavigate()
 
   const deleteRestaurants = () => {
-    console.log("delete test")
     console.log(restaurant)
 
     //can just pass in form rather than specifing form fields - works for multiple different forms
@@ -57,6 +56,8 @@ const Show = () => {
     .catch(err => console.log(err))
   }
 
+
+  // modal states to control the open and close functionality
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -98,11 +99,13 @@ const Show = () => {
        
 
         <div class="centertext short-top">
-        <Button onClick={handleOpen} variant="contained">Book Now</Button>
-        <Button onClick={deleteRestaurants} variant="outlined">Delete</Button> 
+        <Button color="warning" onClick={handleOpen} variant="contained">Book Now</Button>
+        <Button color="warning" onClick={deleteRestaurants} variant="outlined">Delete</Button> 
 
         </div>
 
+
+{/* pop up modal for booking */}
         <Modal
         open={open}
         onClose={handleClose}
@@ -126,13 +129,14 @@ const Show = () => {
         /> 
       </div>
       <div class="short-top">
-          <Button onClick={handleClose} variant="contained">Submit</Button>
+          <Button color="warning" onClick={handleClose} variant="contained">Submit</Button>
 
           </div>
         </Box>
       </Modal>
 
 
+{/* card row for cuisines */}
             <div class="div-spacing centertext">
             <Typography variant="h5">Specialty: </Typography>
             </div>
@@ -273,8 +277,8 @@ const Show = () => {
 
 
     <div class="centertext content-spacing">
-      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
-      <Link to="update-preferences" style={{ textDecoration: 'none' }}> <Button variant="outlined">Update</Button> </Link>
+      <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button color="warning" variant="contained">Back</Button> </Link> 
+      <Link to="update-preferences" style={{ textDecoration: 'none' }}> <Button color="warning" variant="outlined">Update</Button> </Link>
       </div>
 
             

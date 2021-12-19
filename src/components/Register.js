@@ -5,6 +5,8 @@ import {TextField, Button} from '@mui/material';
 //import { useNavigate  } from 'react-router';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {Link} from 'react-router-dom'
+
 
 //check if auth is true
 //creating component for register form
@@ -74,8 +76,14 @@ const Register = props => {
         <TextField label="Password" fullWidth sx={{ s: 1 }} variant="standard" type="password" name= "password" onChange={handleForm} />
         </div>
 
+        <div class="short-top">
+        <Typography variant="p">
+          <Link to="/login" >Already exist? Login Now!</Link>
+        </Typography>
+        </div>
+
       <div class="content-spacing centertext">
-      <Button onClick={submitForm} variant="contained">Submit</Button>
+      <Button color="warning" onClick={submitForm} variant="contained">Submit</Button>
       </div>
 
     </Container>

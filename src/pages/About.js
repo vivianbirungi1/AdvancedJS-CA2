@@ -47,50 +47,37 @@ const About = () => {
           Banjo tousled viral occupy tumeric.</Typography>
       </div>
       <div class="short-top">
-     <Link to="/restaurants" style={{ textDecoration: 'none' }}> <Button variant="contained">View Restaurants</Button> </Link>
+     <Link to="/profile" style={{ textDecoration: 'none' }}> <Button color="warning" variant="contained">View Dashboard</Button> </Link>
      <Link to="/" style={{ textDecoration: 'none' }}> <Button variant="outlined">Home</Button> </Link> 
      </div>
       </div>
       </div>
 
-      <div class="row div-spacing text-space">
+      {/* <div class="row div-spacing text-space">
         <div class="col">
           <Typography variant="h4">Meet Our Team</Typography>
         </div>
-      </div>
+      </div> */}
 
 
-         {/* cards */}
-      <div class="row short-top">
-        <div class="col-2 card-space">
-        <Card sx={{ maxWidth: 300 }}>
-      <CardMedia
-        component="img"
-        height="240"
-        image="https://st2.depositphotos.com/1054749/6808/i/600/depositphotos_68088587-stock-photo-portrait-of-a-young-african.jpg"
-        alt="person1"
-      />
-      {/* second card */}
-      <CardContent>
-        <Typography gutterBottom variant="p" component="div">
-          Lisa Richards - Director
-        </Typography>
-      </CardContent>
-
-    </Card>
-        </div>
+    {/*  */}
+      <div class="row div-spacing">
+       
         <div class="col-2 card-space">
         <Card sx={{ maxWidth: 300 }}>
       <CardMedia
         component="img"
         height="220"
-        image="https://static8.depositphotos.com/1011643/1042/i/600/depositphotos_10422883-stock-photo-attractive-businesswoman.jpg"
+        image="https://cdn.dribbble.com/users/1040516/screenshots/15624895/media/e9c082aa2ddaa3d6f004f75076fa9ca3.png?compress=1&resize=800x600"
         alt="person2"
       />
       {/* third card */}
       <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+         VEGAN
+        </Typography>
         <Typography gutterBottom variant="p" component="div">
-          Jamie Kent - Locations Manager
+        Since opening in 2002 we at Red Bamboo have strived to redefine what it means to be vegan by creating innovative mock meat and seafood dishes. All cruelty and meat free and locally sourced
         </Typography>
       </CardContent>
 
@@ -102,13 +89,28 @@ const About = () => {
       <CardMedia
         component="img"
         height="240"
-        image="https://media.istockphoto.com/photos/m-happy-with-where-my-career-is-heading-picture-id1138617116?k=20&m=1138617116&s=612x612&w=0&h=0l3kXwNeAV7LvzYtgtu97mhWv4NpmOeW5R1Woej6aYY="
+        image="https://cdn.dribbble.com/users/1728242/screenshots/16886854/media/be2d5efce567088345e83d779b650598.jpg?compress=1&resize=1200x900"
         alt="person3"
       />
       {/* fourth card */}
       <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          VIP DINING
+        </Typography>
         <Typography gutterBottom variant="p" component="div">
-          Jason Gold - Marketing
+        Every year we add new vegan dishes from around the word. 2017 includes:
+
+ 
+
+organic vegan fried eggs
+
+breakfast sandwich
+
+chicken and fish tacos
+
+curry wings
+
+teriyaki chicken bowl.
         </Typography>
       </CardContent>
 
@@ -119,12 +121,28 @@ const About = () => {
       <CardMedia
         component="img"
         height="240"
-        image="https://us.123rf.com/450wm/fizkes/fizkes1805/fizkes180500507/101556744-happy-asian-office-worker-in-formal-wear-smiling-to-camera-posing-for-company-business-catalogue-mak.jpg?ver=6"
+        image="https://cdn.dribbble.com/users/1040516/screenshots/16107281/media/7ccc44357af7ffcd395b6b9e6f9fe24e.png?compress=1&resize=1200x900"
         alt="person4"
       />
       <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          EXCLUSIVE LOCATIONS
+        </Typography>
         <Typography gutterBottom variant="p" component="div">
-          Hailey Smith - Social Media
+      
+We are located in historic Greenwich Village half a block away from 
+
+Washington Square Park.
+
+ 
+
+140 West 4th Street
+
+NY, NY 10012
+
+(between 6th Ave. and
+
+MacDougal St.)
         </Typography>
       </CardContent>
     </Card>

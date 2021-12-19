@@ -56,8 +56,8 @@ const Contact = () => {
         </div>
 
         <div class="content-spacing centertext">
-        <Link to="/" style={{ textDecoration: 'none' }}> <Button variant="contained">Back</Button> </Link> 
-      <Button onClick={handleOpen} variant="outlined">Submit</Button>
+        <Link to="/" style={{ textDecoration: 'none' }}> <Button color="warning" variant="contained">Back</Button> </Link> 
+      <Button color="warning" onClick={handleOpen} variant="outlined">Submit</Button>
      </div>
 
      <Modal
