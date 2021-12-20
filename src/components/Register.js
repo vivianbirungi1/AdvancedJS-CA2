@@ -6,6 +6,8 @@ import {TextField, Button} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {Link} from 'react-router-dom'
+import { useNavigate  } from 'react-router';
+
 
 
 //check if auth is true
@@ -13,7 +15,7 @@ import {Link} from 'react-router-dom'
 
 const Register = props => {
 
-  let navigate = useNavigate() 
+  let navigate = useNavigate()
 
   const [form, setForm] = useState(false)
 
